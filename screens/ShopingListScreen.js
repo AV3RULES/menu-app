@@ -27,11 +27,21 @@ class ShopingListScreen extends Component {
     }
 
     modifiyFood(food) {
+        console.log("MODF - current updatedFood: " + this.updatedFood)
+        console.log("food: " + food.name)
         if(food.name && food.approxPrice && food.market){
             this.props.dispatchUpdateFood(food.name);
-            this.updatedFood.map(updatedItem => {
-                return updatedItem.name === food.name ? {...updatedItem, done: !updatedItem.done} : updatedItem;
-            });
+            
+            // food.name === updatedItem.name? console.log(updatedItem.name) : [...this.updatedFood, food]
+            //   TODO modify updateFood
+            if(this.updatedFood.length === 0){
+                console.log("empty");
+                this.updatedFood = [...this.updatedFood, food]
+                console.log(this.updatedFood);
+            }else{
+                console.log(this.updatedFood)
+            }
+
             //this.setState({ name: '', approxPrice: '', market: '', done: false});
         }
     }
@@ -60,6 +70,7 @@ class ShopingListScreen extends Component {
     }
 
     patchFood() {
+        console.log("checking updates...")
         if(this.updatedFood.length != 0){
             console.log("PATCH_FOOD_URL - updated food")
             // fetch('PATCH_FOOD_URL', {
@@ -101,7 +112,7 @@ class ShopingListScreen extends Component {
                     }}
                     onDidFocus={() => console.log('did focus')}
                     onWillBlur={() => {
-                        console.log('will blur - checking updates...');
+                        console.log('will blur');
                         this.patchFood()
 
                     }}
