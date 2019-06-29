@@ -26,10 +26,22 @@ class ShopingListScreen extends Component {
         }
     }
 
+    modifiyFood(food) {
+        if(food.name && food.approxPrice && food.market){
+            this.props.dispatchUpdateFood(food.name);
+            this.updatedFood.map(updatedItem => {
+                return updatedItem.name === food.name ? {...updatedItem, done: !updatedItem.done} : updatedItem;
+            });
+            //this.setState({ name: '', approxPrice: '', market: '', done: false});
+        }
+    }
+
+
     postFood(name, approxPrice, market) {
+        console.log("POST_FOOD_URL - food name: " + name)
         // if(name && approxPrice && market){
         
-        //     fetch('FOOD_URL', {
+        //     fetch('POST_FOOD_URL', {
         //         method: 'POST',
         //         headers: {
         //             'Content-Type': 'application/json'
@@ -39,6 +51,24 @@ class ShopingListScreen extends Component {
         //             approxPrice:approxPrice,
         //             market:market,
         //             done: false
+        //         })
+        //     })
+        //         .then((res) => res.json())
+        //         .then((data) =>  console.log(data))
+        //         .catch((err)=>console.log(err))
+        // }
+    }
+
+    patchFood() {
+        // if(this.updatedFood.length != 0){
+        //     console.log("PATCH_FOOD_URL - updated food")
+        //     fetch('PATCH_FOOD_URL', {
+        //         method: 'PATCH',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body:JSON.stringify({
+        //             this.updatedFood
         //         })
         //     })
         //         .then((res) => res.json())
@@ -57,7 +87,8 @@ class ShopingListScreen extends Component {
                 <NavigationEvents
                     onWillFocus={() => {
                         console.log('will focus');
-                        // fetch('FOOD_URL', {
+                        console.log("GET_FOOD_URL - food")
+                        // fetch('GET_FOOD_URL', {
                         //     method: 'GET'
                         // })
                         //     .then((response) => {
@@ -70,7 +101,8 @@ class ShopingListScreen extends Component {
                     }}
                     onDidFocus={() => console.log('did focus')}
                     onWillBlur={() => {
-                        console.log('will blur');
+                        console.log('will blur - checking updates...');
+                        patchFood()
 
                     }}
                     onDidBlur={() => console.log('did blur')}
@@ -103,9 +135,7 @@ class ShopingListScreen extends Component {
                                             right={true}
                                             checked={item.done}
                                             onPress={() => {
-                                                this.props.dispatchUpdateFood(item.name);
-                                                this.updatedFood =  [...this.updatedFood, item];
-                                                console.log(this.updatedFood);
+                                                this.modifiyFood(item)
                                             }}
                                         />
                                     </View>
