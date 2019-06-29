@@ -60,21 +60,21 @@ class ShopingListScreen extends Component {
     }
 
     patchFood() {
-        // if(this.updatedFood.length != 0){
-        //     console.log("PATCH_FOOD_URL - updated food")
-        //     fetch('PATCH_FOOD_URL', {
-        //         method: 'PATCH',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body:JSON.stringify({
-        //             this.updatedFood
-        //         })
-        //     })
-        //         .then((res) => res.json())
-        //         .then((data) =>  console.log(data))
-        //         .catch((err)=>console.log(err))
-        // }
+        if(this.updatedFood.length != 0){
+            console.log("PATCH_FOOD_URL - updated food")
+            // fetch('PATCH_FOOD_URL', {
+            //     method: 'PATCH',
+            //     headers: {
+            //         'Content-Type': 'application/json'
+            //     },
+            //     body:JSON.stringify({
+            //         this.updatedFood
+            //     })
+            // })
+            //     .then((res) => res.json())
+            //     .then((data) =>  console.log(data))
+            //     .catch((err)=>console.log(err))
+        }
     }
 
     render() {
