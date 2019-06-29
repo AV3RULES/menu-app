@@ -102,7 +102,7 @@ class ShopingListScreen extends Component {
                     onDidFocus={() => console.log('did focus')}
                     onWillBlur={() => {
                         console.log('will blur - checking updates...');
-                        patchFood()
+                        this.patchFood()
 
                     }}
                     onDidBlur={() => console.log('did blur')}
