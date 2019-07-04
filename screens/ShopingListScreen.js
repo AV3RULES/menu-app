@@ -27,7 +27,6 @@ class ShopingListScreen extends Component {
     }
 
     modifiyFood(food) {
-        console.log("food: " + food.name)
         if(food.name && food.approxPrice && food.market){
             this.props.dispatchUpdateFood(food.name);
             if (this.updatedFood.length === 0) {
@@ -41,7 +40,6 @@ class ShopingListScreen extends Component {
                 }
             });
             if(!isPresent){
-                console.log(food + "is not present. Adding...")
                 this.updatedFood.push(food)
             }
         }
