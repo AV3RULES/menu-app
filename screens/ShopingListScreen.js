@@ -27,23 +27,25 @@ class ShopingListScreen extends Component {
     }
 
     modifiyFood(food) {
-        console.log("MODF - current updatedFood: " + this.updatedFood)
         console.log("food: " + food.name)
         if(food.name && food.approxPrice && food.market){
             this.props.dispatchUpdateFood(food.name);
-            
-            // food.name === updatedItem.name? console.log(updatedItem.name) : [...this.updatedFood, food]
-            //   TODO modify updateFood
-            if(this.updatedFood.length === 0){
-                console.log("empty");
-                this.updatedFood = [...this.updatedFood, food]
-                console.log(this.updatedFood);
-            }else{
-                console.log(this.updatedFood)
+            if (this.updatedFood.length === 0) {
+                this.updatedFood.push(food);
             }
-
-            //this.setState({ name: '', approxPrice: '', market: '', done: false});
+            var isPresent = false;
+            this.updatedFood.forEach((item, key) => {
+                if(item.name === food.name){
+                    this.updatedFood[key] = food;
+                    isPresent = true;
+                }
+            });
+            if(!isPresent){
+                console.log(food + "is not present. Adding...")
+                this.updatedFood.push(food)
+            }
         }
+        console.log(this.updatedFood)
     }
 
 
