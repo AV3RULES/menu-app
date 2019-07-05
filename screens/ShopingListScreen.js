@@ -51,7 +51,7 @@ class ShopingListScreen extends Component {
         console.log("POST_FOOD_URL - food name: " + name)
         // if(name && approxPrice && market){
         
-        //     fetch('POST_FOOD_URL', {
+        //     fetch('FOOD_URL', {
         //         method: 'POST',
         //         headers: {
         //             'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ class ShopingListScreen extends Component {
         console.log("checking updates...")
         if(this.updatedFood.length != 0){
             console.log("PATCH_FOOD_URL - updated food")
-            // fetch('PATCH_FOOD_URL', {
+            // fetch('FOOD_URL', {
             //     method: 'PATCH',
             //     headers: {
             //         'Content-Type': 'application/json'
@@ -99,7 +99,7 @@ class ShopingListScreen extends Component {
                     onWillFocus={() => {
                         console.log('will focus');
                         console.log("GET_FOOD_URL - food")
-                        // fetch('GET_FOOD_URL', {
+                        // fetch('FOOD_URL', {
                         //     method: 'GET'
                         // })
                         //     .then((response) => {
